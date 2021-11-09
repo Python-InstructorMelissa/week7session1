@@ -1,6 +1,8 @@
 from app.config.mysqlconnection import connectToMySQL
 from flask import flash
 from app.models.user import User
+# above brought in the class not just the file
+# from app.models import user would bring in the file but later you would have to call user.User
 
 class Inventory:
     db_name = 'week7_inventory'
@@ -41,3 +43,5 @@ class Inventory:
         inventory=cls(r[0])
         inventory.user=User(data)
         return inventory
+
+        # here because we are only pulling in 1 item due to the way the query is written we don't need to use a for loop to add in the user information but we could use it if we wanted to.

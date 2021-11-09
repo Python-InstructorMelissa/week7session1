@@ -83,5 +83,6 @@ class User:
         query = "DELETE FROM user WHERE id = %(id)s;"
         return connectToMySQL(cls.db_name).query_db(query, data)
 
+# instance method
     def fullName(self):
         return f"{self.firstName} {self.lastName}"
