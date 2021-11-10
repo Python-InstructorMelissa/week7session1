@@ -34,14 +34,21 @@ def createInventory():
     Inventory.save(data)
     return redirect('/dashboard')
 
-@app.route('/updateUser/<int:id>')
+@app.route('/user/viewUser/<int:id>')
+def viewUser(id):
+    data = {
+        'id': id
+    }
+    return render_template('viewProfile.html', user=User.getOne(data))
+
+@app.route('/user/updateUser/<int:id>')
 def updateUser(id):
     data = {
         'id': id
     }
     return render_template('updateUser.html', user=User.getOne(data))
 
-@app.route('/editUser/<int:id>', methods=['POST'])
+@app.route('/user/editUser/<int:id>', methods=['POST'])
 def editUser(id):
     data = {
         'id': id,
@@ -50,12 +57,12 @@ def editUser(id):
         'uImg': request.form['uImg']
     }
     User.update(data)
-    return redirect('/dashboard')
+    return redirect('/user/viewProfile/<int:id>')
 
 @app.route('/item/<int:id>')
 def viewItem(id):
     data = {
         'id': id
     }
-    print(Inventory.getOne(data))
+    print("Single Item: ", Inventory.getOne(data))
     return render_template('viewItem.html', item=Inventory.getOneWithUser(data))

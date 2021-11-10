@@ -13,14 +13,16 @@
         <h1>Welcome {{user.firstName}}</h1>
         <img src="{{user.uImg}}" alt="{{user.username}}">
         <nav>
-            <a href="/">Home</a>
-            <a href="/dashboard">Dashboard</a>
-            <a href="/logout">Logout</a>
-            <a href="/addInventory">Add Items</a>
+            {% block menu %} {% include 'menu.html' %} {% endblock menu %}
         </nav>
     </header>
     <main>
-
+        <h2>Your Profile Information</h2>
+        <h3>{{user.firstName}} {{user.lastName}}</h3>
+        <img src="{{user.uImg}}" alt="{{user.username}}">
+        <h4>Your username is: {{user.username}}</h4>
+        <p>Your profile was created: {{user.createdAt}}.  <br>Your Profile was last updated: {{user.updatedAt}}</p>
+        <button><a href="/user/updateUser/{{user.id}}">Update Profile</a></button>
     </main>
     <footer>
         Made by Melissa
