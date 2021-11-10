@@ -17,9 +17,39 @@
         </nav>
     </header>
     <main>
-        {% for i in inventory %}
-            <p><img src="{{i.iImage}}" alt="{{i.iName}}">{{i.iName}}:{{i.count}} </p>
-        {% endfor %}
+        <form action="/user/addToList" method='post'>
+            <h3>Add items to {{ownerList.oList}}</h3>
+            <section>
+                <input type="hidden" name="owner_id" value='{{ownerList.id}}'>
+            </section>
+            <section>
+                <label for="inventory_id">Items: </label>
+                <select name="inventory_id">
+                    {% for item in items %}
+                        <option value="{{item.id}}">{{item.iName}}</option>
+                    {% endfor %}
+                </select>
+            </section>
+            <section>
+                <label for="count"># of Items: </label>
+                <input type="number" name="count">
+            </section>
+            <button>Add Item to list</button>
+        </form>
+        <table>
+            <tr>
+                <th>Item Image</th>
+                <th>Name</th>
+                <th># of Items</th>
+            </tr>
+            {% for i in inventory %}
+                <tr>
+                    <td><img src="{{i.iImage}}" alt="{{i.iName}}"></td>
+                    <td>{{i.iName}}</td>
+                    <td>{{i.count}} </td>
+                </tr>
+                {% endfor %}
+        </table>
     </main>
     <footer>
         Made by Melissa

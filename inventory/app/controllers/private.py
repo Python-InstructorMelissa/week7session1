@@ -5,6 +5,7 @@ from  flask_bcrypt import Bcrypt
 from app.models.user import User
 from app.models.inventory import Inventory
 from app.models.owner import Owner
+from app.models.ownerInventory import OwnerInventory
 
 @app.route('/home')
 def home():
@@ -104,4 +105,16 @@ def viewInventory(id):
     data = {
         'id': id
     }
-    return render_template('viewList.html', ownerList=Owner.getOneWithUser(data), user=User.getAll(), inventory=User.getListWithItems(data))
+    return render_template('viewList.html', ownerList=Owner.getOneWithUser(data), user=User.getAll(), inventory=User.getListWithItems(data), items=Inventory.getAll())
+
+@app.route('/user/addToList', methods=['POST'])
+def addToList():
+    if 'user_id' not in session:
+        return redirect('/')
+    data = {
+        'owner_id': request.form['owner_id'],
+        'inventory_id': request.form['inventory_id'],
+        'count': request.form['count']
+    }
+    OwnerInventory.save(data)
+    return redirect('/dashboard')

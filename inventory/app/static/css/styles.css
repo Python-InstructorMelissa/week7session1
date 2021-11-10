@@ -45,6 +45,42 @@ body main {
 body main img {
   max-width: 150px;
 }
+body main form {
+  margin: 1em;
+  padding: 1em;
+  border: 2px solid #0dcaf0;
+  border-radius: 0.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+body main form section {
+  margin: 0.5em;
+  padding: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+}
+body main form button {
+  color: #0a434e;
+  border-color: #0dcaf0;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: #0dcaf065;
+  border: 1px solid #0dcaf0;
+  padding: 0.375em 0.75em;
+  border-radius: 0.5em;
+}
+body main form button a {
+  color: #0a434e;
+}
+body main form button:hover {
+  background-color: #80d5e696;
+}
 body main .row {
   display: flex;
   flex-direction: row;
@@ -178,5 +214,46 @@ body main button a {
   color: #0a434e;
 }
 body main button:hover {
+  background-color: #80d5e696;
+}
+body main table {
+  margin: 1em;
+}
+body main table,
+body main th,
+body main td {
+  border: 1px solid #0a434e;
+  padding: 0.1em;
+}
+body main table th,
+body main th th,
+body main td th,
+body main table td,
+body main th td,
+body main td td {
+  padding: 0.5em;
+}
+body main table td button,
+body main th td button,
+body main td td button {
+  color: #0a434e;
+  border-color: #0dcaf0;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: #0dcaf065;
+  border: 1px solid #0dcaf0;
+  padding: 0.375em 0.75em;
+  border-radius: 0.5em;
+  margin: 0.5em 0;
+}
+body main table td button a,
+body main th td button a,
+body main td td button a {
+  color: #0a434e;
+}
+body main table td button:hover,
+body main th td button:hover,
+body main td td button:hover {
   background-color: #80d5e696;
 }

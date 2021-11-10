@@ -50,6 +50,45 @@ body {
         img {
             max-width: 150px;
         }
+        form {
+            margin: 1em;
+            padding: 1em;
+            border: 2px solid #0dcaf0;
+            border-radius: .5em;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+
+            section {
+                margin: .5em;
+                padding: 1em;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                width: 95%;
+            }
+
+            button {
+                color: #0a434e;
+                border-color: #0dcaf0;
+                text-align: center;
+                text-decoration: none;
+                vertical-align: middle;
+                background-color: #0dcaf065;
+                border: 1px solid #0dcaf0;
+                padding: 0.375em 0.75em;
+                border-radius: .5em;
+
+                a {
+                    color: #0a434e;
+                }
+            }
+            button:hover {
+                background-color: #80d5e696;
+            }
+        }
 
         .row {
             display: flex;
@@ -186,6 +225,39 @@ body {
         }
         button:hover {
             background-color: #80d5e696;
+        }
+        table {
+            margin: 1em;
+        }
+
+        table, th, td {
+            border: 1px solid #0a434e;
+            padding: .1em;
+
+            th, td {
+                padding: .5em;
+            }
+            td {
+                button {
+                    color: #0a434e;
+                    border-color: #0dcaf0;
+                    text-align: center;
+                    text-decoration: none;
+                    vertical-align: middle;
+                    background-color: #0dcaf065;
+                    border: 1px solid #0dcaf0;
+                    padding: 0.375em 0.75em;
+                    border-radius: .5em;
+                    margin: .5em 0;
+
+                    a {
+                        color: #0a434e;
+                    }
+                }
+                button:hover {
+                    background-color: #80d5e696;
+                }
+            }
         }
     }
 }
