@@ -1,1 +1,0 @@
-KEY = "This is my secret"
