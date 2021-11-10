@@ -35,6 +35,8 @@ def addInventory():
 
 @app.route('/createInventory', methods=['POST'])
 def createInventory():
+    if 'user_id' not in session:
+        return redirect('/')
     data = {
         'iName': request.form['iName'],
         'iImage': request.form['iImage'],
@@ -45,6 +47,8 @@ def createInventory():
 
 @app.route('/createList', methods=['POST'])
 def createList():
+    if 'user_id' not in session:
+        return redirect('/')
     data = {
         'oList': request.form['oList'],
         'user_id': request.form['user_id']
@@ -54,6 +58,8 @@ def createList():
 
 @app.route('/user/viewUser/<int:id>')
 def viewUser(id):
+    if 'user_id' not in session:
+        return redirect('/')
     data = {
         'id': id
     }
@@ -61,6 +67,8 @@ def viewUser(id):
 
 @app.route('/user/updateUser/<int:id>')
 def updateUser(id):
+    if 'user_id' not in session:
+        return redirect('/')
     data = {
         'id': id
     }
@@ -68,6 +76,8 @@ def updateUser(id):
 
 @app.route('/user/editUser/<int:id>', methods=['POST'])
 def editUser(id):
+    if 'user_id' not in session:
+        return redirect('/')
     data = {
         'id': id,
         'firstName': request.form['firstName'],
@@ -79,8 +89,19 @@ def editUser(id):
 
 @app.route('/item/<int:id>')
 def viewItem(id):
+    if 'user_id' not in session:
+        return redirect('/')
     data = {
         'id': id
     }
     print("Single Item: ", Inventory.getOne(data))
     return render_template('viewItem.html', item=Inventory.getOneWithUser(data), user=User.getAll())
+
+@app.route('/user/viewInventory/<int:id>')
+def viewInventory(id):
+    if 'user_id' not in session:
+        return redirect('/')
+    data = {
+        'id': id
+    }
+    return render_template('viewList.html', ownerList=Owner.getOneWithUser(data), user=User.getAll(), inventory=User.getListWithItems(data))

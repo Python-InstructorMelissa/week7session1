@@ -15,6 +15,8 @@ class User:
         self.password = data['password']
         self.createdAt = data['createdAt']
         self.updatedAt = data['updatedAt']
+        self.ownerLists = []
+        self.listItems = []
 
     @staticmethod
     def validate(user):
@@ -86,3 +88,10 @@ class User:
 # instance method
     def fullName(self):
         return f"{self.firstName} {self.lastName}"
+
+    @classmethod
+    def getListWithItems(cls, data):
+        q = "SELECT * FROM inventory LEFT JOIN owner_has_inventory ON owner_has_inventory.inventory_id = inventory.id LEFT JOIN owner ON owner_has_inventory.owner_id = owner.id LEFT JOIN user on owner_has_inventory.owner_id = user.id WHERE user.id = %(id)s;"
+        r = connectToMySQL(cls.db_name).query_db(q, data)
+        print("ownersListswith inventory: ", r)
+        return r

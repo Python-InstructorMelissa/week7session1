@@ -12,6 +12,7 @@ class Owner:
         self.createdAt = data['createdAt']
         self.updatedAt = data['updatedAt']
         self.user = None
+        self.inList = []
 
     @classmethod
     def getAll(cls):
@@ -56,3 +57,4 @@ class Owner:
         return owner
 
         # here because we are only pulling in 1 item due to the way the query is written we don't need to use a for loop to add in the user information but we could use it if we wanted to.
+
