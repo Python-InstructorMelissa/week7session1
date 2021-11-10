@@ -58,4 +58,4 @@ def viewItem(id):
         'id': id
     }
     print(Inventory.getOne(data))
-    return render_template('viewItem.html', item=Inventory.getOneWithUser(data))
+    return render_template('viewItem.html', item=Inventory.getOneWithUser(data), user=User.getAll())
