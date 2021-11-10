@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://beedevservices.github.io/beedev-css/framework/beedev.css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>{{user.firstName}}'s Dashboard</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome {{user.firstName}} to the Inventory App</h1>
+        <img src="{{user.uImg}}" alt="{{user.username}}">
+        <nav>
+            {% block menu %} {% include 'menu.html' %} {% endblock menu %}
+        </nav>
+    </header>
+    <main>
+        <div class="row">
+            {% for i in items %}
+                <div class="column">
+                    <h3>Item Name: {{i.iName}}</h3>
+                    <span><img src="{{i.iImage}}" alt="{{i.iName}}"></span>
+                    <button><a href="/item/{{i.id}}">View Item Information</a></button>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+    <footer>
+        Made by Melissa
+    </footer>
+</body>
+</html>
