@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://beedevservices.github.io/beedev-css/framework/beedev.css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>{{item.iName}}</title>
+</head>
+<body>
+    <header>
+        <h1>{{item.iName}}</h1>
+        <img src="{{item.iImage}}" alt="{{item.iImage}}">
+        <nav>
+            {% block menu %} {% include 'menu.html' %} {% endblock menu %}
+        </nav>
+    </header>
+    <main>
+        <h2>{{item.iName}}</h2>
+        <img src="{{item.iImage}}" alt="{{item.iName}}">
+        <p>Added by {{item.user.fullName()}} on {{item.createdAt}}</p>
+    </main>
+    <footer>
+        Made by Melissa
+    </footer>
+</body>
+</html>

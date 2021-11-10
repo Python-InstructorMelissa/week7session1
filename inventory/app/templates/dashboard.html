@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://beedevservices.github.io/beedev-css/framework/beedev.css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>{{user.firstName}}'s Dashboard</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome {{user.firstName}} to the Inventory App</h1>
+        <img src="{{user.uImg}}" alt="{{user.username}}">
+        <nav>
+            {% block menu %} {% include 'menu.html' %} {% endblock menu %}
+        </nav>
+    </header>
+    <main>
+        <h2>Your inventory</h2>
+        <div class="row">
+            <form action="/createList" method='post'>
+                <h3>Create a New List</h3>
+                <section>
+                    <label for="oList">Inventory List Name: </label>
+                    <input type="text" name="oList">
+                </section>
+                <section>
+                    <input type="hidden" name="user_id" value='{{user.id}}'>
+                </section>
+                <button>Create List</button>
+            </form>
+            <div class="column">
+                <table>
+                    <tr>
+                        <th>List Name</th>
+                        <th>View List</th>
+                        <th>Edit List</th>
+                        <th>Delete List</th>
+                    </tr>
+                    {% for l in ownerList %}
+                        <tr>
+                            <td>{{l.oList}}</td>
+                            <td><button><a href="/user/viewInventory/{{l.id}}">View List</a></button></td>
+                            <td><button><a href="/user/editInventory/{{l.id}}">Edit List</a></button></td>
+                            <td><button><a href="/user/deleteInventory/{{l.id}}">Delete List</a></button></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                
+
+            </div>
+        </div>
+    </main>
+    <footer>
+        Made by Melissa
+    </footer>
+</body>
+</html>

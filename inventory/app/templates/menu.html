@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    {% block menu %}
+    <a href="/home">Home</a>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/addInventory">Add Items</a>
+    <a href="/user/viewUser/{{user.id}}">Profile</a>
+    <button><a href="/logout">Logout</a></button>
+    {% endblock menu %}
+</body>
+</html>
