@@ -4,7 +4,16 @@ import re
 from  flask_bcrypt import Bcrypt
 from app.models.user import User
 from app.models.inventory import Inventory
+from app.models.owner import Owner
 
+@app.route('/home')
+def home():
+    if 'user_id' not in session:
+        return redirect('/')
+    data = {
+        'id': session['user_id']
+    }
+    return render_template('home.html', user=User.getOne(data), items=Inventory.getAll())
 
 @app.route('/dashboard')
 def dashboard():
@@ -13,7 +22,7 @@ def dashboard():
     data = {
         'id': session['user_id']
     }
-    return render_template('dashboard.html', user=User.getOne(data), items=Inventory.getAll())
+    return render_template('dashboard.html', user=User.getOne(data), ownerList=Owner.getOwners(data))
 
 @app.route('/addInventory')
 def addInventory():
@@ -32,16 +41,32 @@ def createInventory():
         'user_id': request.form['user_id']
     }
     Inventory.save(data)
+    return redirect('/home')
+
+@app.route('/createList', methods=['POST'])
+def createList():
+    data = {
+        'oList': request.form['oList'],
+        'user_id': request.form['user_id']
+    }
+    Owner.save(data)
     return redirect('/dashboard')
 
-@app.route('/updateUser/<int:id>')
+@app.route('/user/viewUser/<int:id>')
+def viewUser(id):
+    data = {
+        'id': id
+    }
+    return render_template('viewProfile.html', user=User.getOne(data))
+
+@app.route('/user/updateUser/<int:id>')
 def updateUser(id):
     data = {
         'id': id
     }
     return render_template('updateUser.html', user=User.getOne(data))
 
-@app.route('/editUser/<int:id>', methods=['POST'])
+@app.route('/user/editUser/<int:id>', methods=['POST'])
 def editUser(id):
     data = {
         'id': id,
@@ -57,5 +82,5 @@ def viewItem(id):
     data = {
         'id': id
     }
-    print(Inventory.getOne(data))
+    print("Single Item: ", Inventory.getOne(data))
     return render_template('viewItem.html', item=Inventory.getOneWithUser(data), user=User.getAll())

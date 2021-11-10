@@ -6,23 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='https://beedevservices.github.io/beedev-css/framework/beedev.css'>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <title>Update {{user.firstName}}</title>
+    <title>{{user.firstName}}'s Dashboard</title>
 </head>
 <body>
     <header>
-        <h1>Welcome {{user.firstName}}</h1>
+        <h1>Welcome {{user.firstName}} to the Inventory App</h1>
         <img src="{{user.uImg}}" alt="{{user.username}}">
         <nav>
             {% block menu %} {% include 'menu.html' %} {% endblock menu %}
         </nav>
     </header>
     <main>
-        <h2>Your Profile Information</h2>
-        <h3>{{user.firstName}} {{user.lastName}}</h3>
-        <img src="{{user.uImg}}" alt="{{user.username}}">
-        <h4>Your username is: {{user.username}}</h4>
-        <p>Your profile was created: {{user.createdAt}}.  <br>Your Profile was last updated: {{user.updatedAt}}</p>
-        <button><a href="/user/updateUser/{{user.id}}">Update Profile</a></button>
+        <div class="row">
+            {% for i in items %}
+                <div class="column">
+                    <h3>Item Name: {{i.iName}}</h3>
+                    <span><img src="{{i.iImage}}" alt="{{i.iName}}"></span>
+                    <button><a href="/item/{{i.id}}">View Item Information</a></button>
+                </div>
+            {% endfor %}
+        </div>
     </main>
     <footer>
         Made by Melissa

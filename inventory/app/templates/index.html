@@ -9,7 +9,9 @@
     <title>Inventory app</title>
 </head>
 <body>
-    <header></header>
+    <header>
+        <h1>Inventory Application</h1>
+    </header>
     <main>
         <h1>Inventory Application</h1>
         {% with messages = get_flashed_messages() %}
@@ -20,7 +22,7 @@
             {% endif %}
         {% endwith %}
         <div class="row">
-            <form action="/login" method='post'>
+            <form action="/login" method='post' class='index'>
                 <section>
                     <label for="username">UserName: </label>
                     <input type="text" name='username'>
@@ -31,7 +33,7 @@
                 </section>
                 <button>Login</button>
             </form>
-            <form action="/register"method='post'>
+            <form action="/register"method='post' class='index'>
                 <section>
                     <label for="firstName">First Name: </label>
                     <input type="text" name="firstName">
