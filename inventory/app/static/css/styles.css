@@ -257,3 +257,66 @@ body main th td button:hover,
 body main td td button:hover {
   background-color: #80d5e696;
 }
+body main table form,
+body main th form,
+body main td form {
+  margin: 1em;
+  padding: 1em;
+  border: 2px solid #0dcaf0;
+  border-radius: 0.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+body main table form section,
+body main th form section,
+body main td form section {
+  margin: 0.5em;
+  padding: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+}
+body main table form button,
+body main th form button,
+body main td form button {
+  color: #0a434e;
+  border-color: #0dcaf0;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: #0dcaf065;
+  border: 1px solid #0dcaf0;
+  padding: 0.375em 0.75em;
+  border-radius: 0.5em;
+}
+body main table form button a,
+body main th form button a,
+body main td form button a {
+  color: #0a434e;
+}
+body main table form button:hover,
+body main th form button:hover,
+body main td form button:hover {
+  background-color: #80d5e696;
+}
+body main button {
+  color: #0a434e;
+  border-color: #0dcaf0;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: #0dcaf065;
+  border: 1px solid #0dcaf0;
+  padding: 0.375em 0.75em;
+  border-radius: 0.5em;
+}
+body main button a {
+  color: #0a434e;
+}
+body main button:hover {
+  background-color: #80d5e696;
+}
