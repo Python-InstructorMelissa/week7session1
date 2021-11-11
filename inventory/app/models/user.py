@@ -15,6 +15,8 @@ class User:
         self.password = data['password']
         self.createdAt = data['createdAt']
         self.updatedAt = data['updatedAt']
+        self.ownerList = []
+        self.listItems = []
 
     @staticmethod
     def validate(user):
@@ -86,3 +88,6 @@ class User:
 # instance method
     def fullName(self):
         return f"{self.firstName} {self.lastName}"
+
+    
+    

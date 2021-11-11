@@ -43,5 +43,3 @@ class Inventory:
         inventory=cls(r[0])
         inventory.user=User(data)
         return inventory
-
-        # here because we are only pulling in 1 item due to the way the query is written we don't need to use a for loop to add in the user information but we could use it if we wanted to.

@@ -13,15 +13,12 @@
         <h1>Welcome {{user.firstName}}</h1>
         <img src="{{user.uImg}}" alt="{{user.username}}">
         <nav>
-            <a href="/">Home</a>
-            <a href="/dashboard">Dashboard</a>
-            <a href="/logout">Logout</a>
-            <a href="/addInventory">Add Items</a>
+            {% block menu %} {% include 'menu.html' %} {% endblock menu%}
         </nav>
     </header>
     <main>
         <div class="row">
-            <form action="/editUser/{{user.id}}" method='post'>
+            <form action="/user/editUser/{{user.id}}" method='post'>
                 <section>
                     <label for="firstName">First Name: </label>
                     <input type="text" name="firstName" value='{{user.firstName}}'>

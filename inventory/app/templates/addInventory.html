@@ -12,10 +12,7 @@
     <header>
         <h1>Inventory App</h1>
         <nav>
-            <a href="/">Home</a>
-            <a href="/dashboard">Dashboard</a>
-            <a href="/logout">Logout</a>
-            <a href="/addInventory">Add Items</a>
+            {% block menu %} {% include 'menu.html' %} {% endblock menu%}
         </nav>
     </header>
     <main>

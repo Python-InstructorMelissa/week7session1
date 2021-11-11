@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://beedevservices.github.io/beedev-css/framework/beedev.css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>{{ownerList.oList}}</title>
+</head>
+<body>
+    <header>
+        <h1>{{ownerList.user.fullName()}}: {{ownerList.oList}}</h1>
+        <img src="{{ownerList.user.uImg}}" alt="{{ownerList.user.username}}">
+        <nav>
+            {% block menu %} {% include 'menu.html' %} {% endblock menu %}
+        </nav>
+    </header>
+    <main>
+        <form action="/user/addToList" method='post'>
+            <h3>Add items to {{ownerList.oList}}</h3>
+            <section>
+                <input type="hidden" name="owner_id" value='{{ownerList.id}}'>
+            </section>
+            <section>
+                <label for="inventory_id">Items: </label>
+                <select name="inventory_id">
+                    {% for item in items %}
+                        <option value="{{item.id}}">{{item.iName}}</option>
+                    {% endfor %}
+                </select>
+            </section>
+            <section>
+                <label for="count"># of Items: </label>
+                <input type="number" name="count">
+            </section>
+            <button>Add Item to list</button>
+        </form>
+        <table>
+            <tr>
+                <th>Item Image</th>
+                <th>Name</th>
+                <th># of Items</th>
+            </tr>
+            {% for i in inventory %}
+                <tr>
+                    <td><img src="{{i.iImage}}" alt="{{i.iName}}"></td>
+                    <td>{{i.iName}}</td>
+                    <td>{{i.count}} </td>
+                    <td>{{i['inventory.user_id']}}</td>
+                </tr>
+                {% endfor %}
+        </table>
+    </main>
+    <footer>
+        Made by Melissa
+    </footer>
+</body>
+</html>
