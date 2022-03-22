@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    {% block menu %}
+    {% if session['user_id'] %}
+        <a href="/dashboard/">Dashboard</a>
+        <a href="/dojoGram/add/">Add DojoGram</a>
+        <a href="/dojoGram/feed/">The Feed</a>
+        <a href="/logout/">Logout</a>
+    {% endif %}
+    {% endblock menu %}
+</body>
+</html>
