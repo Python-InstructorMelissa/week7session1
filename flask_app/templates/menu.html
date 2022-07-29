@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    {% block menu %}
+    <a href="/">Home</a>
+    {% if session['user_id'] %}
+        <a href="/logout/">Logout</a>
+        {% if user.level == 1 %}
+        <a href="/admin/">Admin Dash</a>
+        {% endif %}     
+    {% endif %}
+    {% endblock menu %}
+</body>
+</html>
